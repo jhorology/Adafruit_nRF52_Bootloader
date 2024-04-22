@@ -69,3 +69,11 @@ Makefile.user
 
 # Exclude all SoftDevice S340 files
 lib/softdevice/s340*
+
+# node, xpacks
+xpacks/
+node_modules/
+package-lock.json
+
+# python venv
+.venv/

@@ -1,0 +1,2 @@
+intelhex
+adafruit-nrfutil
