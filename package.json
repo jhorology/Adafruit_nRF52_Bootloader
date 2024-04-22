@@ -1,0 +1,44 @@
+{
+    "name": "@<scope>/Adafruit_nRF52_Bootloader",
+    "version": "0.1.0",
+    "description": "A source xPack with <your-description-here>",
+    "main": "",
+    "scripts": {
+        "postinstall": "xpm install --verbose"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/<user-id>/Adafruit_nRF52_Bootloader.git"
+    },
+    "homepage": "https://github.com/<user-id>/Adafruit_nRF52_Bootloader/",
+    "bugs": {
+        "url": "https://github.com/<user-id>/Adafruit_nRF52_Bootloader/issues/"
+    },
+    "keywords": [
+        "xpack"
+    ],
+    "author": {
+        "name": "<author-name>",
+        "email": "<author-email>",
+        "url": "<author-url>"
+    },
+    "license": "MIT",
+    "config": {},
+    "devDependencies": {
+        "xpm": "^0.19.1"
+    },
+    "xpack": {
+        "minimumXpmRequired": "0.19.1",
+        "dependencies": {},
+        "devDependencies": {
+            "@xpack-dev-tools/arm-none-eabi-gcc": {
+                "specifier": "13.2.1-1.1.1",
+                "local": "link",
+                "platforms": "all"
+            }
+        },
+        "properties": {},
+        "actions": {},
+        "buildConfigurations": {}
+    }
+}

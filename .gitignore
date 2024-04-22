@@ -65,3 +65,11 @@ TAGS
 
 .DS_Store
 Makefile.user
+
+# node, xpacks
+xpacks/
+node_modules/
+package-lock.json
+
+# python venv
+.venv/
