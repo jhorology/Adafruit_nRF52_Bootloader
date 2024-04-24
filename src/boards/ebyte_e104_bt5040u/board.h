@@ -37,8 +37,8 @@
 //                Blue  P0.12 (?? not color LED)
 // Pin No.39 LED  Red   P0.06
 
-#define LED_PRIMARY_PIN      _PINNUM(0, 8)    // LED1 Red
-#define LED_SECONDARY_PIN    _PINNUM(0, 6)    // LED  Red
+#define LED_PRIMARY_PIN      _PINNUM(0, 6)    // LED  Red
+#define LED_SECONDARY_PIN    _PINNUM(0, 8)    // LED1 Red
 #define LED_STATE_ON         0
 
 /*------------------------------------------------------------------*/
@@ -46,11 +46,11 @@
  *------------------------------------------------------------------*/
 
 // Pin No.36 RST REST
-// Pin No.39 SW  P1.06
+// Pin No.37 SW  P1.06
 
 #define BUTTONS_NUMBER       2
-#define BUTTON_1             _PINNUM(1, 6)   // SW
-#define BUTTON_2             _PINNUM(1, 10)  // Pin No. 28
+#define BUTTON_1             _PINNUM(0, 18) // unusable: RESET
+#define BUTTON_2             _PINNUM(1, 6)  // SW
 #define BUTTON_PULL          NRF_GPIO_PIN_PULLUP
 
 //--------------------------------------------------------------------+
