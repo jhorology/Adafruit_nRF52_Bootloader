@@ -204,16 +204,18 @@ if (( $#clean )); then
     return
 fi
 
-export DIRENV_LOG_FORMAT=
-eval "$(direnv export zsh)"
-direnv allow
-
 if [[ ! -d node_modules || ! -d xpacks ]]; then
     npm install
 fi
 
+if [[ $(which arm-none-eabi-gcc || true) != "${PROJECT}/xpacks/.bin/arm-none-eabi-gcc" ]]; then
+    export path=("${PROJECT}/xpacks/.bin" $path)
+fi
+
 if [[ -d .venv ]]; then
-    source .venv/bin/activate
+    if [[ $(which python3 || true) != "${PROJECT}/.venv/bin/python3" ]]; then
+       source .venv/bin/activate
+    fi
 else
     python3 -m venv .venv
     source .venv/bin/activate
