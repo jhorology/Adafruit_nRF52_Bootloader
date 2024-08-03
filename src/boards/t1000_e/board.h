@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Ha Thach for Adafruit Industries
+ * Copyright (c) 2020 Yihui Xiong for Makerdiary
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef _ITSYBITSY_NRF52840_H
-#define _ITSYBITSY_NRF52840_H
+#ifndef _T1000_E_H
+#define _T1000_E_H
 
 #define _PINNUM(port, pin)    ((port)*32 + (pin))
 
@@ -31,43 +31,37 @@
 /* LED
  *------------------------------------------------------------------*/
 #define LEDS_NUMBER           1
-#define LED_PRIMARY_PIN       _PINNUM(0, 6)
-#define LED_STATE_ON          1
-
-#define LED_APA102_CLK          _PINNUM(1, 9)
-#define LED_APA102_DATA         _PINNUM(0, 8)
-#define LED_APA102_BRIGHTNESS   0x1
-#define APA102_NUMBER           1
-
-// For dotstart set to max for colour information is not masked off
-#define BOARD_RGB_BRIGHTNESS  0xffffffff
-
+#define LED_PRIMARY_PIN       _PINNUM(0, 24)  // Green
+#define LED_STATE_ON          0
 
 /*------------------------------------------------------------------*/
 /* BUTTON
  *------------------------------------------------------------------*/
 #define BUTTONS_NUMBER        2
-#define BUTTON_1              _PINNUM(0, 29)  // user switch
-#define BUTTON_2              _PINNUM(1, 02)  // D2 breakout
+#define BUTTON_1              _PINNUM(0, 6)  // Primary Button
+#define BUTTON_2              _PINNUM(0, 18) // unusable: RESET
 #define BUTTON_PULL           NRF_GPIO_PIN_PULLUP
 
 //--------------------------------------------------------------------+
 // BLE OTA
 //--------------------------------------------------------------------+
-#define BLEDIS_MANUFACTURER   "Adafruit Industries"
-#define BLEDIS_MODEL          "ItsyBitsy nRF52840 Express"
+#define BLEDIS_MANUFACTURER   "Seeed Studio"
+#define BLEDIS_MODEL          "T1000-E"
 
 //--------------------------------------------------------------------+
 // USB
 //--------------------------------------------------------------------+
-#define USB_DESC_VID           0x239A
-#define USB_DESC_UF2_PID       0x0051
-#define USB_DESC_CDC_ONLY_PID  0x0052
+#define USB_DESC_VID            0x2886
+#define USB_DESC_UF2_PID        0x0057
+#define USB_DESC_CDC_ONLY_PID   0x0057
 
-//------------- UF2 -------------//
-#define UF2_PRODUCT_NAME   "Adafruit ItsyBitsy nRF52840 Express"
-#define UF2_VOLUME_LABEL   "ITSY840BOOT"
-#define UF2_BOARD_ID       "nRF52840-ItsyBitsy-revA"
-#define UF2_INDEX_URL      "https://www.adafruit.com/"
+//--------------------------------------------------------------------+
+// UF2
+//--------------------------------------------------------------------+
+#define UF2_PRODUCT_NAME        "Seeed T1000-E for Meshtastic"
+#define UF2_VOLUME_LABEL        "T1000-E"
+#define UF2_BOARD_ID            "nRF52840-T1000-E-v1"
+#define UF2_INDEX_URL           "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html"
 
-#endif // _ITSY_NRF52840_H
+
+#endif /* _T1000_E_H */
