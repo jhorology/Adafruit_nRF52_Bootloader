@@ -8,6 +8,7 @@ cd $PROJECT
 zparseopts -D -E -F -- \
            {h,-help}=help  \
            -clean=clean \
+           -setup=setup \
            -check-probe=check_probe \
            -erase=erase \
            {b,-build}=build \
@@ -25,6 +26,7 @@ help_usage() {
           "Usage:" \
           "    $THIS_SCRIPT:t -h,--help                  help" \
           "    $THIS_SCRIPT:t --clean                    clean build environment" \
+          "    $THIS_SCRIPT:t --setup                    setup build environment" \
           "    $THIS_SCRIPT:t --check-probe              check black magic probe" \
           "    $THIS_SCRIPT:t --erase                    erase via black magic" \
           "    $THIS_SCRIPT:t -b,--build BOARD...        build bootloader(s)" \
@@ -44,7 +46,21 @@ clean() {
     rm -rf _build
     rm -rf node_modules
     rm -rf xpacks
-    rm -rf .venv
+    rm -rf .direnv
+}
+
+setup() {
+    npm install
+    direnv allow
+    eval "$(direnv export zsh)"
+    pip3 install -r requirements.txt
+}
+
+setup() {
+    npm install
+    direnv allow
+    eval "$(direnv export zsh)"
+    pip3 install -r requirements.txt
 }
 
 build() {
@@ -197,34 +213,23 @@ burn() {
 if (( $#help )); then
     help_usage
     return
-fi
-
-if (( $#clean )); then
+elif (( $#clean )); then
     clean
     return
-fi
-
-if [[ ! -d node_modules || ! -d xpacks ]]; then
-    npm install
-fi
-
-if [[ $(which arm-none-eabi-gcc || true) != "${PROJECT}/xpacks/.bin/arm-none-eabi-gcc" ]]; then
-    export path=("${PROJECT}/xpacks/.bin" $path)
-fi
-
-if [[ -d .venv ]]; then
-    if [[ $(which python3 || true) != "${PROJECT}/.venv/bin/python3" ]]; then
-       source .venv/bin/activate
-    fi
-else
-    python3 -m venv .venv
-    source .venv/bin/activate
-    pip3 install -r requirements.txt
-fi
-
-if (( $#check_probe )); then
-    check_probe
+elif (( $#setup )); then
+    setup
     return
+fi
+
+if [[ ! -d node_modules || ! -d xpacks || ! -d .direnv ]]; then
+    echo ghogehoge
+    exit 0
+    setup
+fi
+
+if [[ -f .envrc ]]; then
+    direnv allow
+    eval "$(direnv export zsh)"
 fi
 
 if (( $#erase )); then

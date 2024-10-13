@@ -77,3 +77,4 @@ package-lock.json
 
 # python venv
 .venv/
+.direnv
