@@ -25,7 +25,7 @@
     "license": "MIT",
     "config": {},
     "devDependencies": {
-        "xpm": "^0.19.1"
+        "xpm": "^0.19.3"
     },
     "xpack": {
         "minimumXpmRequired": "0.19.1",
