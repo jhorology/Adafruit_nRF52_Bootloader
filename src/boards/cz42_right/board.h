@@ -58,7 +58,7 @@
 
 #define UF2_PRODUCT_NAME        "CZ42 Right"
 #define UF2_VOLUME_LABEL        "CZ42_R"
-#define UF2_BOARD_ID            "CZ42-RIGHT-Rev_A"
+#define UF2_BOARD_ID            "CZ42_R"
 #define UF2_INDEX_URL           "https://github.com/jhorology/keyboards/tree/main/zmk_keyboards/boards/arm/rz42"
 
 #endif // RZ42_RIGHT_H

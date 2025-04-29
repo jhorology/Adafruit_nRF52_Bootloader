@@ -58,7 +58,7 @@
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME    "CKP"
 #define UF2_VOLUME_LABEL    "CKP"
-#define UF2_BOARD_ID        "polarity-works-ckp"
+#define UF2_BOARD_ID        "CKP"
 #define UF2_INDEX_URL       "http://www.polarityworks.com/btckp"
 
 #endif // POLARITY_WORKS_CKP_H

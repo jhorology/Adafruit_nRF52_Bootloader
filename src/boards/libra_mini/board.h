@@ -59,7 +59,7 @@
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME        "Libra mini"
 #define UF2_VOLUME_LABEL        "LIBRA_MINI"
-#define UF2_BOARD_ID            "Libra_mini-rev_A"
+#define UF2_BOARD_ID            "LIBRA_MINI"
 #define UF2_INDEX_URL           "https://github.com/jhorology/keyboards/tree/main/zmk_keyboards/boards/shields/libra_mini"
 
 #endif // RZ42_LEFT_H
