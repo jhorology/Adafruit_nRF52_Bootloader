@@ -63,7 +63,7 @@
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME    "cyber60 Rev D"
 #define UF2_VOLUME_LABEL    "CYBER60_D"
-#define UF2_BOARD_ID        "nRF52840-cyber60-rev_d"
+#define UF2_BOARD_ID        "CYBER60_D"
 #define UF2_INDEX_URL       "https://github.com/4pplet/cyber60"
 
 #endif // CYBER60_D_H
