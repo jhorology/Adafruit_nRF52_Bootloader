@@ -72,6 +72,11 @@ void bootloader_dfu_activity_mark(void)
     m_startup_dfu_has_activity = true;
 }
 
+void bootloader_mark_usb_mounted(void)
+{
+    m_usb_was_mounted = true;
+}
+
 /**@brief   Function for handling callbacks from pstorage module.
  *
  * @details Handles pstorage results for clear and storage operation. For detailed description of
@@ -99,9 +104,10 @@ static void pstorage_callback_handler(pstorage_handle_t * p_handle,
 static void dfu_startup_timer_handler(void * p_context)
 {
 #ifdef NRF_USBD
-  if (m_cancel_timeout_on_usb && tud_mounted())
+  // If host enumerated the device, keep waiting — m_usb_was_mounted was set
+  // by tud_mount_cb() and the unplug path in wait_for_events() will handle exit.
+  if (m_cancel_timeout_on_usb && m_usb_was_mounted)
   {
-    m_usb_was_mounted = true;
     return;
   }
 #endif
@@ -145,19 +151,12 @@ static void wait_for_events(void)
       tud_cdc_write_flush();
     }
 
-    if (m_cancel_timeout_on_usb)
+    // Exit startup DFU once USB was actually unplugged (VBUS gone), not on a
+    // host-side re-enumeration or temporary unmount.
+    if (m_cancel_timeout_on_usb && m_usb_was_mounted &&
+        !(NRF_POWER->USBREGSTATUS & POWER_USBREGSTATUS_VBUSDETECT_Msk))
     {
-      if (tusb_inited() && tud_mounted())
-      {
-        m_usb_was_mounted = true;
-      }
-      else if (m_usb_was_mounted &&
-               !(NRF_POWER->USBREGSTATUS & POWER_USBREGSTATUS_VBUSDETECT_Msk))
-      {
-        // Only exit startup DFU after USB was actually unplugged, not on a host-side
-        // re-enumeration or temporary unmount.
-        bootloader_timeout_startup_dfu();
-      }
+      bootloader_timeout_startup_dfu();
     }
 #endif
 
